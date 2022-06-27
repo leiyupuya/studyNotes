@@ -34,6 +34,8 @@
   - [str()](#str)
   - [import](#import)
 - [pip命令](#pip%E5%91%BD%E4%BB%A4)
+- [python填坑记录](#python%E5%A1%AB%E5%9D%91%E8%AE%B0%E5%BD%95)
+  - [版本差异](#%E7%89%88%E6%9C%AC%E5%B7%AE%E5%BC%82)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -566,3 +568,19 @@ print(type(str(d)), len(str(d)), str(d))
 
 # pip命令
 - 查看pip安装的软件包路径: `pip show requests`
+
+# python填坑记录
+## 版本差异
+- 如下代码,`3.6.8`版本报错`SyntaxError: 'continue' not supported inside 'finally' clause`,`3.8.9`运行正常
+  + [为什么在Python的`finally`子句中不允许`continue`？](https://www.thinbug.com/q/8302293)
+  + [What’s New In Python 3.8 - Other Language Changes - 第一条](https://docs.python.org/3/whatsnew/3.8.html#other-language-changes)
+  ```
+  for i in range(10):
+    print(i)
+    try:
+        pass
+    except Exception as e:
+        print(e)
+    finally:
+        continue
+  ```
